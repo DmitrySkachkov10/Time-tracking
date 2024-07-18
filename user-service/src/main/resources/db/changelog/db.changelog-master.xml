@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="0" author="dmitry">
+        <sql>CREATE SCHEMA IF NOT EXISTS users;</sql>
+    </changeSet>
+
+    <changeSet id="1" author="dmitry">
+        <createTable tableName="users" schemaName="users">
+            <column name="uuid" type="uuid">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mail" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="full_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="dmitry">
+        <insert tableName="users" schemaName="users">
+            <column name="uuid" value="24bb7a41-78c3-446b-8b9b-62aa8b44efe6"/>
+            <column name="password" value="$2a$10$DL5ZoCZ/JPzYsu7nV0DEgeHb6lYFom8s51AKzzVmFQEIvUbD7BAii"/>
+            <column name="mail" value="dima.dmitry06@gmail.com"/>
+            <column name="full_name" value="Admin"/>
+            <column name="role" value="ADMIN"/>
+            <column name="version" value="1"/>
+        </insert>
+        <insert tableName="users" schemaName="users">
+            <column name="uuid" value="3a40dbf1-f81a-4e95-a745-329479bf969b"/>
+            <column name="password" value="$2a$10$XhWzuFkmecn5nQDH1JEHOew075ZTCpO5PjZcUlCnDEM/VUD8jsQj2"/>
+            <column name="mail" value="2dima.2dmitry06@gmail.com"/>
+            <column name="full_name" value="Admin2"/>
+            <column name="role" value="USER"/>
+            <column name="version" value="2"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
