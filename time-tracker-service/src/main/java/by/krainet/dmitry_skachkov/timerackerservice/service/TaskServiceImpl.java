@@ -45,7 +45,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public TaskDto getByUuid(UUID uuid) {
-        Task task = taskRepo.findById(uuid).orElseThrow(() -> new ValidationException(""));
+        Task task = taskRepo.findById(uuid).orElseThrow(() -> new ValidationException("Task not found with UUID: " + uuid));
         return new TaskDto(task.getUuid().toString(),
                 task.getName(),
                 task.getDescription(),
@@ -68,7 +68,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     @Transactional
     public void setStatus(UUID uuid, String status) {
-        Task task = taskRepo.findById(uuid).orElseThrow(() -> new ValidationException(""));
+        Task task = taskRepo.findById(uuid).orElseThrow(() -> new ValidationException("Task not found with UUID: " + uuid));
         task.setStatus(Status.valueOf(status));
         taskRepo.save(task);
     }

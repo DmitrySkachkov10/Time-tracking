@@ -47,7 +47,8 @@ public class RecordServiceImpl implements RecordService {
     @Override
     public RecordDto readByUuid(UUID taskUuid, UUID userUuid) {
         Record record = recordRepo.findByUserUuidAndTaskUuid(userUuid, taskUuid)
-                .orElseThrow(() -> new ValidationException(""));
+                .orElseThrow(() -> new ValidationException("Record not found for User UUID: " + userUuid
+                        + " and Task UUID: " + taskUuid));
         return new RecordDto(record.getTaskUuid().toString(),
                 record.getUserUuid().toString(),
                 record.getAssignedAt(),
@@ -71,10 +72,11 @@ public class RecordServiceImpl implements RecordService {
     @Transactional
     public void end(RecordCompleteDto completeDto) {
         Record record = recordRepo.findByUserUuidAndTaskUuid(completeDto.getUserUuid(), completeDto.getTaskUuid())
-                .orElseThrow(() -> new ValidationException(""));
+                .orElseThrow(() -> new ValidationException("Record not found for User UUID: " + completeDto.getUserUuid()
+                        + " and Task UUID: " + completeDto.getTaskUuid()));
         record.setCompletedAt(LocalDateTime.now());
-//        record.setTimeSpent(Duration.between(record.getAssignedAt(), record.getCompletedAt()));
 
+//        record.setTimeSpent(Duration.between(record.getAssignedAt(), record.getCompletedAt())); //  soon
         taskService.setStatus(completeDto.getTaskUuid(), completeDto.getStatus());
         recordRepo.save(record);
     }
