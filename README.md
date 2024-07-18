@@ -21,7 +21,7 @@
   
     **[API time-tracking-service](https://github.com/DmitrySkachkov10/Time-tracking/blob/main/time-tracker-service/README.md)**
 
-- Docker compose
+- Docker Сompose
    Выполните команду
     ```sh
    docker-compose up -d
