@@ -15,7 +15,7 @@ services:
 
   time-tracker-service:
     build: time-tracker-service
-    image: time-tracker-service:1.1.4
+    image: time-tracker-service:1.1.5
     container_name: time-tracker-service
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/time_tracking
@@ -39,7 +39,7 @@ services:
 
   account-service-application:
     build: user-service
-    image: account-service:1.1.8
+    image: account-service:1.1.9
     container_name: account-service-application
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres2:5432/test
