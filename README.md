@@ -10,17 +10,18 @@
 
 ## Инструкции по запуску
 
-1. Сборка каждого микросервиса:
+- Сборка каждого микросервиса:
 
    В корневой директории каждого микросервиса выполните команду:
    ```sh
    mvn package -Dtestskip
   ```
 
- **[API user-service](https://github.com/DmitrySkachkov10/Time-tracking/blob/main/user-service/README.md)**
- **[API time-tracking-service](https://github.com/DmitrySkachkov10/Time-tracking/blob/main/time-tracker-service/README.md)**
+    **[API user-service](https://github.com/DmitrySkachkov10/Time-tracking/blob/main/user-service/README.md)**
+  
+    **[API time-tracking-service](https://github.com/DmitrySkachkov10/Time-tracking/blob/main/time-tracker-service/README.md)**
 
-2. Docker compose
+- Docker compose
    Выполните команду
     ```sh
    docker-compose up -d
