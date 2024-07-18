@@ -36,7 +36,7 @@
         <insert tableName="users" schemaName="users">
             <column name="uuid" value="24bb7a41-78c3-446b-8b9b-62aa8b44efe6"/>
             <column name="password" value="$2a$10$DL5ZoCZ/JPzYsu7nV0DEgeHb6lYFom8s51AKzzVmFQEIvUbD7BAii"/>
-            <column name="mail" value="dima.dmitry06@gmail.com"/>
+            <column name="mail" value="admin.admin@gmail.com"/>
             <column name="full_name" value="Admin"/>
             <column name="role" value="ADMIN"/>
             <column name="version" value="1"/>
@@ -44,8 +44,8 @@
         <insert tableName="users" schemaName="users">
             <column name="uuid" value="3a40dbf1-f81a-4e95-a745-329479bf969b"/>
             <column name="password" value="$2a$10$XhWzuFkmecn5nQDH1JEHOew075ZTCpO5PjZcUlCnDEM/VUD8jsQj2"/>
-            <column name="mail" value="2dima.2dmitry06@gmail.com"/>
-            <column name="full_name" value="Admin2"/>
+            <column name="mail" value="users.user@gmail.com"/>
+            <column name="full_name" value="user"/>
             <column name="role" value="USER"/>
             <column name="version" value="2"/>
         </insert>
