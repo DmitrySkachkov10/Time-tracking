@@ -22,4 +22,9 @@ public class GlobalHandlerController {
         return new ResponseEntity<>(new ExcepionResponseDto(""), HttpStatus.CONFLICT);
     }
 
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<ExcepionResponseDto> defaultExceptionHandler(RuntimeException e) {
+        ExcepionResponseDto responseDto = new ExcepionResponseDto(e.getMessage());
+        return new ResponseEntity<>(responseDto, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

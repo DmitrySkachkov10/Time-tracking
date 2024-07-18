@@ -65,7 +65,7 @@ public class UserServiceImpl implements UserService {
             userRepo.save(userEntity);
         } catch (OptimisticEntityLockException e) {
             e.printStackTrace();
-            throw e; //throw to controller Advice
+            throw e;
         }
     }
 }
