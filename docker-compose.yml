@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: time_tracking
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+
+
+  time-tracker-service:
+    build: time-tracker-service
+    image: time-tracker-service:1.1.4
+    container_name: time-tracker-service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/time_tracking
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    depends_on:
+      - postgres
+    ports:
+      - "8081:8081"
+
+  postgres2:
+    image: postgres:latest
+    container_name: postgres2
+    restart: always
+    environment:
+      POSTGRES_DB: test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5444:5432"
+
+  account-service-application:
+    build: user-service
+    image: account-service:1.1.8
+    container_name: account-service-application
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres2:5432/test
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    depends_on:
+      - postgres2
+    ports:
+      - "8080:8080"
+
